@@ -1,0 +1,18 @@
+.error-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-content: center;
+    height: 100vh;
+    gap: 2rem;
+}
+
+.error-msg{
+    align-self: center;
+}
+
+.go-back-btn{
+    align-self: center;
+    background-color: var(--accent-clr);        
+    color: var(--text-clr-dark);
+}

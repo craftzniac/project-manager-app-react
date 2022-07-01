@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-clr: #C78FFF;
+    --secondary-clr: #FFAD82;
+    --accent-clr: #FFD368;
+    --text-clr-light: #f1e2ff;
+    --text-clr-dark: #2F4858;
+    --milk-clr: #e0e0e0;
+    --white-clr: #ffffff;
+    --white-clr-transparent: rgba(255, 255, 255, 0.5);
+    --red-clr: #FF0000;
+    --bg-clr: var(--primary-clr);
+
+    --p1: 1rem;
+    --p2: calc(var(--p1) * 2);
+
+    --text-size-norm: 1rem;
+    --ff: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         
+}
+
+body{
+    background-color: var(--bg-clr);
+    color: var(--text-clr-dark);
+    font-family: var(--ff);
+}
+
+a, button{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    font-weight: 200;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+h5 {
+    color: var(--secondary-clr);
+    font-weight: 400;
+}
+
+span {
+    color: var(--primary-clr);
+}
+
+.btn, input{
+    border-radius: 5px;
+    padding-inline: var(--p1);
+    padding-block: calc(var(--p1) * 0.5);
+    transition: all 100ms ease-in-out;
+    border: none;
+    outline: 1px solid transparent;
+    font-size: var(--text-size-norm);
+    font-family: var(--ff);
+}
+
+
+.btn{
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.btn:hover{
+    outline: 3px solid var(--white-clr-transparent);
+}   
+
+input:focus{
+    outline: 3px solid var(--white-clr-transparent);
+}

@@ -1,0 +1,12 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white-clr);
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+}
+
+.my-projects-link{
+    color: var(--text-clr-dark);
+}

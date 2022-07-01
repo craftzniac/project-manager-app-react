@@ -1,0 +1,21 @@
+.project {
+    background-color: var(--white-clr);
+    padding: var(--p1);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--primary-clr);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    transition: all 300ms ease-in-out;
+}
+
+.project:hover {
+    background-color: var(--milk-clr);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+
+.project-extra {
+    margin-top: calc(var(--p1) * 0.5);
+    display: flex;
+    justify-content: space-between;
+}
