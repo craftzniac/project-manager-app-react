@@ -1,0 +1,62 @@
+.primary-header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--white-clr);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: var(--p-inline);
+    padding-block: var(--p-block);
+    width: 100%;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+nav > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#project-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#all-projects-btn {
+    background-color: var(--primary-clr);
+    color: var(--text-clr-light);
+}
+
+#all-projects-btn:hover {
+    --hover-outline-clr: var(--text-clr-dark);
+    background-color: var(--secondary-clr);
+    color: var(--text-clr-dark);
+}
+
+#delete-project-btn {
+    --btn-p: 0.3rem;
+}
+
+#delete-project-btn:hover{
+    --hover-outline-clr: var(--secondary-clr);
+}
+
+.svg {
+    transition: all 300ms ease-in-out;
+}
+
+.svg-icon-lg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.p-top{
+    padding-top: 0.4rem;
+}

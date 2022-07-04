@@ -1,0 +1,23 @@
+#add-board-form-container {
+    display: flex;
+    align-self: center;
+    width: 70%;
+}
+
+
+#add-board-form {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.text-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 50%;
+}

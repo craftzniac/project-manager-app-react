@@ -1,11 +1,11 @@
 import React from "react";
-import ProjectCardsContainer from "../ProjectCardsContainer/";
+import ProjectsContainer from "../ProjectsContainer/";
 import "./styles.css";
 
 const Main = () => {
      return (
           <main>
-               <ProjectCardsContainer />
+               <ProjectsContainer />
           </main>
      );
 };

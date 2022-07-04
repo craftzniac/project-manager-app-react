@@ -1,0 +1,10 @@
+.boards {
+    display: flex;
+    align-items: start;
+    padding-inline: var(--p2);
+    padding-block: var(--p2);
+    gap: 2rem;
+    overflow-x: auto;
+    height: 100%;
+}
+

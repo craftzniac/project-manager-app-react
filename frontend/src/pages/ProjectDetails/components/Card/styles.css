@@ -1,0 +1,43 @@
+.card {
+    background-color: var(--white-clr);
+    border-radius: 5px;
+    border-radius: 5px;
+    padding: calc(var(--p1) * 0.3);
+    gap: 0.4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.card-completed {
+    margin-top: 0.3rem;
+}
+
+.card-description {
+    text-align: left;
+    min-width: 0;
+    width: 100%;
+    word-wrap: break-word;
+    padding-inline: calc(var(--p1) * 0.3);
+    /* padding-block: calc(var(--p-block) * 0.5); */
+}
+
+.card-settings {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.card-settings>a {
+    font-size: 0.7rem;
+}
+
+.card-edit-btn, .card-delete-btn{
+    --btn-p: 0.3rem;
+    padding: auto;
+}
+
+.svg-icon-sm{
+    width: 1.1rem;
+}

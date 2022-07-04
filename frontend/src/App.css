@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary-clr: #C78FFF;
     --secondary-clr: #FFAD82;
     --accent-clr: #FFD368;
@@ -19,20 +19,21 @@
     --p1: 1rem;
     --p2: calc(var(--p1) * 2);
 
+    --btn-p: var(--p1);
+
     --text-size-norm: 1rem;
     --ff: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-         
 }
 
-body{
+body {
     background-color: var(--bg-clr);
     color: var(--text-clr-dark);
     font-family: var(--ff);
 }
 
-a, button{
+a,
+button {
     text-decoration: none;
-    cursor: pointer;
 }
 
 p {
@@ -56,27 +57,34 @@ span {
     color: var(--primary-clr);
 }
 
-.btn, input{
+.btn,
+input {
+    cursor: pointer;
     border-radius: 5px;
-    padding-inline: var(--p1);
-    padding-block: calc(var(--p1) * 0.5);
-    transition: all 100ms ease-in-out;
+    padding-inline: var(--btn-p);
+    padding-block: calc(var(--btn-p) * 0.5);
+    transition: all 150ms ease-in-out;
     border: none;
     outline: 1px solid transparent;
     font-size: var(--text-size-norm);
     font-family: var(--ff);
 }
 
+input[type="text"] {
+    cursor: text;
+}
 
-.btn{
+
+.btn {
     text-decoration: none;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.btn:hover{
-    outline: 3px solid var(--white-clr-transparent);
-}   
+.btn:hover {
+    --hover-outline-clr: var(--white-clr-transparent);
+    outline: 3px solid var(--hover-outline-clr);
+}
 
-input:focus{
+input:focus {
     outline: 3px solid var(--white-clr-transparent);
 }

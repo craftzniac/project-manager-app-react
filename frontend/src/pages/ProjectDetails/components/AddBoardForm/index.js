@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import "./styles.css";
 
-const AddProjectForm = () => {
+const AddBoardForm = () => {
      const [isNameEmpty, setIsNameEmpty] = useState(false);
      const nameElRefContainer = useRef(null);
 
-     const addProject = () => {
+     const addBoard = () => {
           const text = nameElRefContainer.current.value;
           // check if text is falsible
           if (text === "") {
@@ -17,29 +17,30 @@ const AddProjectForm = () => {
 
      return (
           <>
-               <div id="add-project-form-container">
-                    <div id="create-new-project-form">
+               <div id="add-board-form-container">
+                    <div id="add-board-form" action="#" method="POST">
                          <div className="text-input-wrapper">
                               <input
+                                   id="new-board-text-input"
                                    type="text"
                                    name="nameEl"
-                                   placeholder="Enter Project name"
-                                   id="new-project-name"
+                                   placeholder="Board title"
                                    ref={nameElRefContainer}
                               />
                               {isNameEmpty && (
                                    <p className="error-msg">
-                                        You have not entered any project name
+                                        You have not entered any board name
                                    </p>
                               )}
                          </div>
                          <button
-                              type="button"
-                              id="project-submit-btn"
+                              // id="create-board-btn"
+                              type="submit"
+                              id="add-board-btn"
+                              onClick={addBoard}
                               className="btn"
-                              onClick={addProject}
                          >
-                              Add Project
+                              Create Board
                          </button>
                     </div>
                </div>
@@ -47,4 +48,4 @@ const AddProjectForm = () => {
      );
 };
 
-export default AddProjectForm;
+export default AddBoardForm;

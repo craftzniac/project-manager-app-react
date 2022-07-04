@@ -1,0 +1,70 @@
+.board {
+    background-color: var(--secondary-clr);
+    padding: var(--p1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    min-width: 20rem;
+    max-width: 25rem;
+}
+
+.board-header {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--white-clr);
+}
+
+.board-title {
+    font-size: 1.2rem;
+    width: 100%;
+    min-width: 0;
+    border-radius: 5px;
+    padding: calc(var(--p1) * 0.25);
+}
+
+.board-header-settings {
+    display: flex;
+    gap: calc(var(--p1) * 0.5);
+}
+
+.edit-board-title, .delete-board{
+    --btn-p: 0.6rem;
+}
+
+.edit-board-title{
+    background-color: var(--accent-clr);
+}
+
+
+.delete-board{
+    background-color: var(--white-clr);
+}
+
+
+.svg-icon-md{
+    width: 1.4rem;
+}
+
+
+.board-body {
+    overflow-y: auto;
+}
+
+.board-footer .add-card-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.board-footer input[type='text'] {
+    width: 100%;
+}
+
+.board-footer .add-card-btn {
+    font-size: 1.2rem;
+}
