@@ -1,33 +1,49 @@
 import React, { useState, useRef } from "react";
 import "./styles.css";
+import baseUrl from '../../../baseUrl'
 
-const AddBoardForm = () => {
-     const [isNameEmpty, setIsNameEmpty] = useState(false);
-     const nameElRefContainer = useRef(null);
+const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
+     const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+     const [title, setTitle] = useState("")
 
-     const addBoard = () => {
-          const text = nameElRefContainer.current.value;
+     const addBoard = async () => {
           // check if text is falsible
-          if (text === "") {
-               setIsNameEmpty(true);
+          if (title === "") {
+               setIsTitleEmpty(true);
           } else {
-               setIsNameEmpty(false);
+               setIsTitleEmpty(false);
+               
+               const response = await (await fetch(baseUrl + "/projects/boards/", {
+                    method: 'POST',
+                    headers: {
+                         "Content-Type": "application/json",
+                         
+                    },
+                    body: JSON.stringify({ boardName: title , projectId: projectId })
+               })).json()
+
+               setBoards((prevValue) => {
+                    return [...prevValue, response.board]
+               })
+               setProjBoardCount(response.projectBoardCount)
+               setTitle("")
           }
      };
 
      return (
           <>
                <div id="add-board-form-container">
-                    <div id="add-board-form" action="#" method="POST">
+                    <div id="add-board-form">
                          <div className="text-input-wrapper">
                               <input
                                    id="new-board-text-input"
                                    type="text"
                                    name="nameEl"
                                    placeholder="Board title"
-                                   ref={nameElRefContainer}
+                                   onChange={(e) => setTitle(e.target.value)}
+                                   value={title}
                               />
-                              {isNameEmpty && (
+                              {isTitleEmpty && (
                                    <p className="error-msg">
                                         You have not entered any board name
                                    </p>
@@ -39,6 +55,7 @@ const AddBoardForm = () => {
                               id="add-board-btn"
                               onClick={addBoard}
                               className="btn"
+
                          >
                               Create Board
                          </button>

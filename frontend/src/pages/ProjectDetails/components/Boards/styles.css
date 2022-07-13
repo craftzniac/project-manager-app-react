@@ -1,6 +1,6 @@
 .boards {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     padding-inline: var(--p2);
     padding-block: var(--p2);
     gap: 2rem;

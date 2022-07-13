@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/projects/", projectRouter);
 
-app.use("/api/v1/project/board", boardRouter);
-app.use("/api/v1/project/board/card", cardRouter);
+app.use("/api/v1/projects/boards", boardRouter);
+app.use("/api/v1/projects/boards/cards", cardRouter);
 
 app.listen(4000);
