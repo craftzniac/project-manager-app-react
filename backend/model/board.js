@@ -18,10 +18,11 @@ export default class Board {
                     async (error, result) => {
                          if (!error) {
                               const board = await this.getEmptyBoard(id);
+
                               const projectBoardCount = (
                                    await this.db.getProjectBoards(projectId)
                               ).length;
-                              resolve({ board, projectBoardCount });
+                              resolve({ board: { id: board.id, title: board.title, projectId: board.project_id, dateCreated: board.date_created }, projectBoardCount });
                          } else {
                               reject(error);
                          }
