@@ -19,7 +19,12 @@ export default class Project {
                               project.boardCount = (
                                    await this.getProjectBoards(project.id)
                               ).length;
-                              modifiedProjectList.push(project);
+                              modifiedProjectList.push({
+                                   id : project.id,
+                                   name: project.name,
+                                   boardCount: project.boardCount,
+                                   dateCreated: project.date_created
+                              });
                          }
 
                          resolve(modifiedProjectList);
@@ -40,10 +45,17 @@ export default class Project {
                this.#connection.query(query, [id], async (error, result) => {
                     if (!error) {
                          //result is returned as an array even if the result is just 1 item
-                         let project = result[0];
-                         if (project == null) {
+                         const proj = result[0];
+                         
+                         if (proj == null) {
                               reject({ error: "project does not exist" });
                               return;
+                         }
+
+                         const project = {
+                              id: proj.id,
+                              name: proj.name,
+                              dateCreated: proj.date_created
                          }
 
                          const unprocessedBoards = await this.getProjectBoards(
@@ -55,13 +67,12 @@ export default class Project {
                               board.cards = cards;
                               boards.push(board);
                          }
-                         resolve({
-                              id: project.id,
-                              name: project.name,
-                              boards: boards,
-                              boardCount: unprocessedBoards.length,
-                              dateCreated: project.date_created,
-                         });
+
+                         project.boards = boards;
+                         project.boardCount = boards.length;
+                         // console.log(project)
+
+                         resolve(project);
                     } else {
                          reject(error);
                     }
@@ -74,6 +85,14 @@ export default class Project {
                const query = `SELECT * FROM card WHERE board_id = ?`;
                this.#connection.query(query, [boardId], (error, result) => {
                     if (!error) {
+                         result = result.map(card => {
+                              return {
+                                   id: card.id,
+                                   description: card.description,
+                                   boardId: card.board_id,
+                                   isCompleted: card.is_completed
+                              }
+                         })
                          resolve(result);
                     } else {
                          reject(error);
@@ -96,9 +115,13 @@ export default class Project {
                                    [projectId],
                                    async (error, result) => {
                                         if (!error) {
-                                             const project = result[0];
-                                             project.board_count = 0;
-                                             resolve(project);
+                                             const proj = result[0]
+
+                                             resolve({ id: proj.id, 
+                                                  name: proj.name, 
+                                                  boardCount: 0, 
+                                                  dateCreated: proj.date_created 
+                                             });
                                         } else {
                                              reject(error);
                                         }

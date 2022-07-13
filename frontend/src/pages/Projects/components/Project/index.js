@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-const Project = ({ id, name, boardCount, date_created: dateCreated }) => {
+const Project = ({ id, name, boardCount, dateCreated }) => {
      return (
           <Link to={`/projects/${id}`}>
                {console.log("id project: " + id)}

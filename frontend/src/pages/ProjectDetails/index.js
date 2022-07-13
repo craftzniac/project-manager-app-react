@@ -21,6 +21,7 @@ const ProjectDetails = () => {
 
      useEffect(() => {
           if (response) {
+               console.log(response)
                setProject(response);
           }
      }, [response]);
