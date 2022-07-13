@@ -29,12 +29,7 @@ const AddProjectForm = ({ setProjects }) => {
                     return [...prevValue, project]
                })
 
-               // TODO: implement including the added project to the list
                // TODO: refactor reponse from API to use camelCase like project.boardCount
-               
-
-               console.log(project)
-
           }
      };
      
