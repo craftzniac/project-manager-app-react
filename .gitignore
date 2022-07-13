@@ -1,0 +1,1 @@
+# initializing the top level folder as a git repo and adding a .gitignore file makes the git repo recognize the .gitignore files inside the children folders

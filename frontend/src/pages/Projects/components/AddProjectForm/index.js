@@ -1,19 +1,43 @@
 import React, { useState, useRef } from "react";
 import "./styles.css";
+import baseUrl from '../../../baseUrl'
 
-const AddProjectForm = () => {
+const AddProjectForm = ({ setProjects }) => {
+     const [name, setName] = useState('')
      const [isNameEmpty, setIsNameEmpty] = useState(false);
-     const nameElRefContainer = useRef(null);
 
-     const addProject = () => {
-          const text = nameElRefContainer.current.value;
+     const addProject = async () => {
           // check if text is falsible
-          if (text === "") {
+          if (name === "") {
                setIsNameEmpty(true);
           } else {
                setIsNameEmpty(false);
+               const project = await (await fetch(baseUrl + '/projects', {
+                    method: 'POST',
+                    headers: {
+                         "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({projectName: name})
+
+               })).json();
+
+               //clear name to clear the input field since value of input is bound to it
+               setName("")
+
+               // add the new project to the list of projects to be displayed
+               setProjects((prevValue) => {
+                    return [...prevValue, project]
+               })
+
+               // TODO: implement including the added project to the list
+               // TODO: refactor reponse from API to use camelCase like project.boardCount
+               
+
+               console.log(project)
+
           }
      };
+     
 
      return (
           <>
@@ -25,7 +49,8 @@ const AddProjectForm = () => {
                                    name="nameEl"
                                    placeholder="Enter Project name"
                                    id="new-project-name"
-                                   ref={nameElRefContainer}
+                                   onChange={(e) => setName(e.target.value)}
+                                   value={name}
                               />
                               {isNameEmpty && (
                                    <p className="error-msg">

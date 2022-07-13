@@ -7,7 +7,7 @@ import Project from "../Project/";
 
 import { useFetch } from "../../../../customHooks/useFetch";
 
-const baseUrl = "http://localhost:4000/api/v1";
+import baseUrl from '../../../baseUrl' 
 
 const ProjectsContainer = () => {
      const [isFormOpen, setIsFormOpen] = useState(false);
@@ -40,7 +40,7 @@ const ProjectsContainer = () => {
                               + New Project
                          </button>
 
-                         {isFormOpen && <AddProjectForm />}
+                         {isFormOpen && <AddProjectForm setProjects={setProjects}/>}
                          {loading && <h1>Loading ...</h1> }
                          {projects && (
                               <div id="projects">
