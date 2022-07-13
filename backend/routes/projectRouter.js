@@ -1,6 +1,6 @@
 import { Router, urlencoded, json } from "express";
 import Project from "../model/project.js";
-import generateId from "../utils/general.js";
+import generateId from "../utils/generateId.js";
 
 const projectRouter = Router();
 

@@ -1,6 +1,6 @@
 import { Router, urlencoded, json } from "express";
 import Card from "../model/card.js";
-import generateId from "../utils/general.js";
+import generateId from "../utils/generateId.js";
 
 const cardRouter = Router();
 cardRouter.use(urlencoded({ extended: true }));

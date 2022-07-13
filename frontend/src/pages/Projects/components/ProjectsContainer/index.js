@@ -40,7 +40,7 @@ const ProjectsContainer = () => {
                               + New Project
                          </button>
 
-                         {isFormOpen && <AddProjectForm setProjects={setProjects}/>}
+                         {isFormOpen && <AddProjectForm setProjects={setP/api/v1/projectrojects}/>}
                          {loading && <h1>Loading ...</h1> }
                          {projects && (
                               <div id="projects">

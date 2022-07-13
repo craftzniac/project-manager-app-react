@@ -1,6 +1,6 @@
 import { Router, urlencoded, json } from "express";
 import Board from "../model/board.js";
-import generateId from "../utils/general.js";
+import generateId from "../utils/generateId.js";
 
 const boardRouter = Router();
 boardRouter.use(urlencoded({ extended: true }));
