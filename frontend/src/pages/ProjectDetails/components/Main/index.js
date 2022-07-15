@@ -43,7 +43,7 @@ const Main = (props) => {
 
                     {isFormOpen && <AddBoardForm projectId = { props.id } setBoards = {setBoards} setProjBoardCount = { setProjBoardCount }  />}
 
-                    {<Boards boards={boards}/>}
+                    {<Boards boards={boards} setBoards={setBoards} setProjBoardCount = {setProjBoardCount}/>}
                </section>
           </main>
      );

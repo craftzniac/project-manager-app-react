@@ -26,6 +26,13 @@
     padding: calc(var(--p1) * 0.25);
 }
 
+.highlight{
+    background-color: var(--milk-clr);
+    color: var(--text-clr-dark);
+    border-radius: 5px;
+    padding: calc(var(--p1) * 0.5);
+}
+
 .board-header-settings {
     display: flex;
     gap: calc(var(--p1) * 0.5);
