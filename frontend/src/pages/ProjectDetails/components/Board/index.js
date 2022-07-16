@@ -1,21 +1,18 @@
-import React , {useEffect, useRef}from "react";
+import React , {useState, useEffect, useRef}from "react";
 import "./styles.css";
 import editIcon from '../../../../assets/edit-btn.svg'
 import deleteIcon from "../../../../assets/delete-btn.svg"
 import Cards from '../Cards/'
+import AddCardForm from '../AddCardForm/'
 import baseUrl from '../../../baseUrl'
 
-export const Board = ({
-     id,
-     title,
-     projectId,
-     dateCreated,
-     cards,
-     setBoards,
-     setProjBoardCount
-}) => {
+export const Board = (props) => {
+
+     const { id, title, projectId, dateCreated, setProjBoardCount, setBoards} = props
      const titleRef =  useRef(null)
-     // console.log("cards drom board : %o", cards)
+     const [cards, setCards] = useState(props.cards);
+
+
      const deleteBoard = async () => {
           const response = await(await fetch(baseUrl + '/projects/boards', {
                method: 'DELETE',
@@ -83,12 +80,9 @@ export const Board = ({
           if (titleRef.current != null){
 
                titleRef.current.addEventListener('focusout', undoMakeBoardEditable)
-               console.log('event added')
      
                return () => {
                     if (titleRef.current != null){
-
-                         console.log("remove event")
                          titleRef.current.removeEventListener("focusout",undoMakeBoardEditable);
                     }
                }
@@ -116,24 +110,10 @@ export const Board = ({
                     </div>
                </div>
                <div className="board-body">
-               {/* {console.log(cards)} */}
-                    <Cards {...cards}/>
+                    <Cards cards={cards} setCards={setCards}/>
                </div>
                <div className="board-footer">
-                    <div className="add-card-form" action="#" method="POST">
-                         <input
-                              className="new-card-text"
-                              type="text"
-                              placeholder="New todo"
-                         />
-                         <button
-                              className="add-card-btn btn"
-                              type="submit"
-                              value="submit-new-card"
-                         >
-                              +
-                         </button>
-                    </div>
+                    <AddCardForm boardId={id} setCards={setCards}/>
                </div>
           </div>
      );

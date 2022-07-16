@@ -61,17 +61,3 @@
     overflow-y: auto;
 }
 
-.board-footer .add-card-form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 1rem;
-}
-
-.board-footer input[type='text'] {
-    width: 100%;
-}
-
-.board-footer .add-card-btn {
-    font-size: 1.2rem;
-}

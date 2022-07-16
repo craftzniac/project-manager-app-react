@@ -18,7 +18,15 @@ export default class Card {
                const query = `SELECT * FROM card WHERE id = ?`;
                this.#connection.query(query, [id], (error, result) => {
                     if (!error) {
-                         resolve(result[0]);
+                         const card = {
+                              id: result[0].id,
+                              description: result[0].description,
+                              boardId: result[0].board_id,
+                              isCompleted: result[0].is_completed
+                         }
+                         
+                         
+                         resolve({ card, status: this.SUCCESS.status });
                     } else {
                          reject(this.FAILED);
                     }
@@ -68,7 +76,7 @@ export default class Card {
                const query = `DELETE FROM card WHERE id = ?`;
                this.#connection.query(query, [id], (error, result) => {
                     if (!error) {
-                         resolve(this.SUCCESS);
+                         resolve({ status: this.SUCCESS.status, id : id });
                     } else {
                          reject(this.FAILED);
                     }

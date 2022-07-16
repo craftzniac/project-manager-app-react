@@ -5,7 +5,6 @@ import "./styles.css";
 const Project = ({ id, name, boardCount, dateCreated }) => {
      return (
           <Link to={`/projects/${id}`}>
-               {console.log("id project: " + id)}
                <div className="project" id={id}>
                     <h3 className="project-title">{name}</h3>
                     <div className="project-extra">

@@ -1,15 +1,13 @@
-import React from "react";
+import React , {useState} from "react";
 import './styles.css'
 import Card from '../Card/'
 
-const Cards = (cards) => {
-    // converting the cards object to an array for convenience
-    cards = Object.values(cards);
-
+const Cards = (props) => {
+    
      return <div className="cards">
      
-        {cards.map((card) => {
-            return <Card key={card.id}  card={card}/>
+        {props.cards.map((card) => {
+            return <Card key={card.id}  {...card} setCards = {props.setCards}/>
         })}
         
      </div>;

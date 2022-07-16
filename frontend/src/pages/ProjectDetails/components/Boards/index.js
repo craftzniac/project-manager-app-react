@@ -7,7 +7,6 @@ const Boards = ({boards, setBoards, setProjBoardCount}) => {
      return (
           <div className="boards">
                {boards.map((board) => {
-                    console.log(board.id)
                     return <Board key={board.id} {...board} setBoards={setBoards} setProjBoardCount = {setProjBoardCount}/>
                })}
           </div>
