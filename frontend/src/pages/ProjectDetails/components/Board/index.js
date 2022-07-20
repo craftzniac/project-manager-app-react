@@ -10,7 +10,12 @@ export const Board = (props) => {
 
      const { id, title, projectId, dateCreated, setProjBoardCount, setBoards} = props
      const titleRef =  useRef(null)
-     const [cards, setCards] = useState(props.cards);
+     const [cards, setCards] = useState([]);
+
+
+     useEffect(() => {
+          setCards(props.cards)
+     }, [cards])
 
 
      const deleteBoard = async () => {
@@ -23,7 +28,6 @@ export const Board = (props) => {
           })).json();
 
           if (response.status === "success"){
-
                setBoards((prevValue) => {
                     return prevValue.filter((board) => {
                          return board.id !== id

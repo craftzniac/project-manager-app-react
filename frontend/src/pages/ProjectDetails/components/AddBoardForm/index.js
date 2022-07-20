@@ -21,8 +21,6 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                     },
                     body: JSON.stringify({ boardName: title , projectId: projectId })
                })).json()
-
-               console.log(response.board)
                
                setBoards((prevValue) => {
                     return [...prevValue, response.board]

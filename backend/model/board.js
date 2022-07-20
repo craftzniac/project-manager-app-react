@@ -22,7 +22,7 @@ export default class Board {
                               const projectBoardCount = (
                                    await this.db.getProjectBoards(projectId)
                               ).length;
-                              resolve({ board: { id: board.id, title: board.title, projectId: board.project_id, dateCreated: board.date_created }, projectBoardCount });
+                              resolve({ board: { id: board.id, title: board.title, projectId: board.project_id, dateCreated: board.date_created, cards: [] }, projectBoardCount });
                          } else {
                               reject(error);
                          }

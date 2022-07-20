@@ -3,7 +3,7 @@ import './styles.css'
 import Card from '../Card/'
 
 const Cards = (props) => {
-    
+
      return <div className="cards">
      
         {props.cards.map((card) => {
