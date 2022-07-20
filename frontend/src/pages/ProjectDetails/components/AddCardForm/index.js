@@ -15,6 +15,7 @@ const AddCardForm = ({ boardId, setCards}) => {
                 body: JSON.stringify({ boardId: boardId, description: text })
            })).json();
  
+           console.log(response)
            if(response.status == 'success'){
                 setCards((prevValue) => {
                     return [...prevValue, response.card]

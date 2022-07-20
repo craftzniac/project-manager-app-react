@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import editIcon from "../../../../assets/edit-btn.svg";
 import deleteIcon from "../../../../assets/delete-btn.svg";
-import  {  Link  } from 'react-router-dom'
 import './styles.css'
 import baseUrl from "../../../baseUrl"
 
@@ -13,7 +12,8 @@ const Card = ( props ) => {
 
      const descriptionRef = useRef(null)
 
-     const strikeThrough = () => {
+     function strikeThrough(){
+          console.log(descriptionRef)
           if (isCheckBoxChecked) {
                descriptionRef.current.style.textDecoration = "line-through"
           }else{
@@ -82,6 +82,7 @@ const Card = ( props ) => {
           setDescription(descriptionRef.current.textContent)
      }
 
+     // TODO: WHY IS descriptionRef.current null?
      useEffect(() => {
           if (descriptionRef.current != null){
                descriptionRef.current.addEventListener("focusout", undoMakeEditable)
@@ -92,7 +93,7 @@ const Card = ( props ) => {
                     }
                }
           }
-     }, [descriptionRef.current])
+     }, [descriptionRef])
 
      return (
           <div className="card">

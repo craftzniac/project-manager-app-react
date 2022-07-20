@@ -10,12 +10,14 @@ export const Board = (props) => {
 
      const { id, title, projectId, dateCreated, setProjBoardCount, setBoards} = props
      const titleRef =  useRef(null)
-     const [cards, setCards] = useState([]);
+     const [cards, setCards] = useState([]); 
 
 
+     //must run only the very first time the Board component is rendered. 
+     //If it runs between rerenders, props.cards will reset the new state of the cards
      useEffect(() => {
           setCards(props.cards)
-     }, [cards])
+     }, [])
 
 
      const deleteBoard = async () => {

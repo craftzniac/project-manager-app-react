@@ -9,7 +9,7 @@ const Cards = (props) => {
         {props.cards.map((card) => {
             return <Card key={card.id}  {...card} setCards = {props.setCards}/>
         })}
-        
+         
      </div>;
 };
 
