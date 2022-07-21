@@ -1,5 +1,6 @@
 const spawn = require('node-pty').spawn
-// pull down the latest version of the project before 
+
+// Performs automatic update of the app files when it is run before the app is started 
 const gitPull = spawn('git', ['pull']);
 gitPull.onData(function (data) {
     if (data.includes("unable to access")) {
