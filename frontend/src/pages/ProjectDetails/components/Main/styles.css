@@ -53,3 +53,10 @@ main {
     color: var(--secondary-clr);
     background-color: var(--text-clr-dark);
 }
+
+@media screen and (max-width: 294px) {
+    .section-header{
+        flex-direction:column;
+        align-items: flex-start;
+    }
+}

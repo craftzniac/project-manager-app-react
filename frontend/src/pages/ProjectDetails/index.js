@@ -1,14 +1,13 @@
 import React from "react";
 import Header from "./components/Header/";
 import Main from "./components/Main/";
-import { useFetch } from "../../customHooks/useFetch";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
+import baseUrl from "../baseUrl";
 
 const ProjectDetails = () => {
      const { id } = useParams();
 
-     const baseUrl = "http://localhost:4000/api/v1";
      const [project, setProject] = useState({
           id: id,
           name: "",
@@ -17,13 +16,15 @@ const ProjectDetails = () => {
           boards: []
      });
 
-     const [response, error, loading] = useFetch(baseUrl + "/projects/" + id);
-
      useEffect(() => {
-          if (response) {
-               setProject(response);
+          async function fetchData() {
+               const response = await (await fetch(baseUrl + "/projects/" + id)).json()
+               if (response) {
+                    setProject(response);
+               }
           }
-     }, [response]);
+          fetchData();
+     }, []);
 
      return (
           <>

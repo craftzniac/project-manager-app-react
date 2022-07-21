@@ -29,7 +29,7 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                setTitle("")
           }
      };
-
+ 
      return (
           <>
                <div id="add-board-form-container">

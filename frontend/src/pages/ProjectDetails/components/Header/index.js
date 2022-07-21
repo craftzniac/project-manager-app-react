@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link , Navigate} from "react-router-dom";
+import Dialog, { DialogType } from '../Dialog/'
+import baseUrl from '../../../baseUrl'
 
 import deleteIcon from "../../../../assets/delete-btn.svg";
 
 const Header = ({ id, name, dateCreated }) => {
+
+     const [isDialogOpen, setIsDialogOpen] = useState(false)
+     const [isProjectDeleted, setIsProjectDeleted] = useState(false)
+
+     const showDeleteDialog = () => {
+          setIsDialogOpen(true)
+     }
+
+     const deleteProject = async () => {
+               const response = await (
+                    await fetch(baseUrl + "/projects/", {
+                         method: "DELETE",
+                         headers: {
+                              Accept: "application/json",
+                              "Content-Type": "application/json",
+                         },
+                         body: JSON.stringify({ projectId : id }),
+                    })
+               ).json();
+
+               setIsProjectDeleted(true)
+     }
+
+
      return (
+          <>
+          {isProjectDeleted && <Navigate replace to="/"/>}
+          { isDialogOpen && <Dialog  type={DialogType.PROJECT} setIsDialogOpen={setIsDialogOpen} performDelete={deleteProject} />  }
           <header className="primary-header">
                <nav>
                     <div id="project-title-container">
@@ -28,6 +57,7 @@ const Header = ({ id, name, dateCreated }) => {
                               type="button"
                               id="delete-project-btn"
                               className="btn"
+                              onClick={showDeleteDialog}
                          >
                               <img
                                    className="svg svg-icon-lg p-top"
@@ -38,6 +68,8 @@ const Header = ({ id, name, dateCreated }) => {
                     </div>
                </nav>
           </header>
+          </>
+          
      );
 };
 

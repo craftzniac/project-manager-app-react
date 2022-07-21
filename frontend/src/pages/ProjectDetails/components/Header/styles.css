@@ -60,3 +60,14 @@ nav > div {
 .p-top{
     padding-top: 0.4rem;
 }
+
+@media screen and (max-width: 351px) {
+    nav > div {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #project-title-container{
+        gap: calc(var(--p1) * 0.5);
+    }
+}

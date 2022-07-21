@@ -19,3 +19,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+@media screen and (max-width: 336px) {
+    .project-extra{
+        flex-direction: column;
+    }
+}

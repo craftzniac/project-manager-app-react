@@ -9,10 +9,10 @@ const Header = () => {
                     <Link to="#" className="my-projects-link">My Projects</Link>
                </h1>
                <p>
-                    Hello, <Link to="#" className="profile-link">Mikey</Link>
+                    Welcome! <Link to="#" className="profile-link"></Link>
                </p>
           </header>
      );
 };
-
+ 
 export default Header;

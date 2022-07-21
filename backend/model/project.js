@@ -167,7 +167,7 @@ export default class Project {
                                    if (message == this.FAILED) {
                                         reject(this.FAILED);
                                    } else {
-                                        resolve(this.SUCCESS);
+                                        resolve({id: projectId, status: this.SUCCESS.status});
                                    }
                               }
                          } else {

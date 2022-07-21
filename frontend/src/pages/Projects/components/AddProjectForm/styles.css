@@ -24,3 +24,16 @@
 .error-msg{
     color: var(--red-clr);
 }
+
+
+@media screen and (max-width: 340px) {
+    #create-new-project-form{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .text-input-wrapper{
+        min-width: 100%;
+    }
+
+}

@@ -8,12 +8,14 @@
     --primary-clr: #C78FFF;
     --secondary-clr: #FFAD82;
     --accent-clr: #FFD368;
+    --accent-clr-dark: #c49a32;
     --text-clr-light: #f1e2ff;
     --text-clr-dark: #2F4858;
     --milk-clr: #e0e0e0;
     --white-clr: #ffffff;
     --white-clr-transparent: rgba(255, 255, 255, 0.5);
     --red-clr: #FF0000;
+    --light-red-clr: #ca7676;
     --bg-clr: var(--primary-clr);
 
     --p1: 1rem;
@@ -21,7 +23,11 @@
 
     --btn-p: var(--p1);
 
-    --text-size-norm: 1rem;
+    --text-size-norm: var(--p1);
+    --text-size-mid: calc(var(--p1) * 1.2);
+    --text-size-lg: calc(var(--p1) * 1.5);
+
+
     --ff: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -43,10 +49,12 @@ button {
 
 p {
     font-weight: 200;
+    font-size: var(--text-size-norm);
 }
 
 h1 {
     font-weight: 700;
+    font-size: calc(var(--p1) * 2);
 }
 
 h3 {
@@ -93,3 +101,12 @@ input[type="text"] {
 input:focus {
     outline: 3px solid var(--white-clr-transparent);
 }
+
+/* large mobile */
+@media screen and (max-width: 460px) {
+    :root{
+        --p1: calc(1rem * 0.8);
+    }
+}
+
+

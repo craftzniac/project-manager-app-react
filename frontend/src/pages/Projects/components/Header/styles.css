@@ -3,10 +3,24 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: var(--white-clr);
-    padding-inline: 2rem;
-    padding-block: 1.5rem;
+    padding-inline: calc(var(--p1) * 2 );
+    padding-block: var(--text-size-lg);
 }
 
 .my-projects-link{
     color: var(--text-clr-dark);
+}
+
+
+@media screen and (max-width: 460px) {
+    header{
+        padding: calc(var(--p1) * 1.5);
+    }
+}
+
+@media screen and (max-width: 283px) {
+    header{
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

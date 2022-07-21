@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import AddProjectForm from "../AddProjectForm";
 import "./styles.css";
 import { useEffect } from "react";
+import upArrow from '../../../../assets/up_arrow.svg'
 
 import Project from "../Project/";
-
-import { useFetch } from "../../../../customHooks/useFetch";
-
-import baseUrl from '../../../baseUrl' 
+import baseUrl from '../../../baseUrl'
 
 const ProjectsContainer = () => {
      const [isFormOpen, setIsFormOpen] = useState(false);
      const [projects, setProjects] = useState([]);
-
-     const [response, error, loading] = useFetch(baseUrl + "/projects");
+     const [isLoading, setIsLoading] = useState(true)
 
      const toggleForm = () => {
           setIsFormOpen((prevState) => {
@@ -22,11 +19,17 @@ const ProjectsContainer = () => {
      };
 
      useEffect(() => {
-          if (response) {
-               setProjects(response);
+          async function fetchData() {
+               const response = await (await fetch(baseUrl + "/projects/")).json();
+               if (response) {
+                    setProjects(response);
+               }
+               setIsLoading(false)
           }
-     }, [response]);
+          fetchData();
 
+     }, []);
+ 
      return (
           <>
                <div className="projects-container-wrapper">
@@ -40,8 +43,9 @@ const ProjectsContainer = () => {
                               + New Project
                          </button>
 
-                         {isFormOpen && <AddProjectForm setProjects={setProjects}/>}
-                         {loading && <h1>Loading ...</h1> }
+                         {isFormOpen && <AddProjectForm setProjects={setProjects} />}
+                         {projects.length === 0 && <NoProject />}
+                         {isLoading && <h1>Loading ...</h1>}
                          {projects && (
                               <div id="projects">
                                    {projects.map((project) => {
@@ -59,5 +63,19 @@ const ProjectsContainer = () => {
           </>
      );
 };
+
+
+const NoProject = () => {
+     return (
+          <div className="no-project">
+
+               <img src={upArrow} className="up-arrow"/>
+               <p className="empty-project-text">
+                    You don't have any project(s) yet! Click the
+                    'New Project' button to add a Project
+               </p>
+          </div>
+     );
+}
 
 export default ProjectsContainer;

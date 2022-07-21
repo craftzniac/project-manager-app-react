@@ -5,7 +5,7 @@ import baseUrl from '../../../baseUrl'
 const AddProjectForm = ({ setProjects }) => {
      const [name, setName] = useState('')
      const [isNameEmpty, setIsNameEmpty] = useState(false);
-
+ 
      const addProject = async () => {
           // check if text is falsible
           if (name === "") {

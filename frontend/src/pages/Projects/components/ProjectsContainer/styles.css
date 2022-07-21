@@ -1,5 +1,5 @@
 .projects-container-wrapper {
-    padding: 3rem;
+    padding: var(--p2);
     display: flex;
     justify-content: center;
 }
@@ -47,4 +47,34 @@
 .project-extra {
     display: flex;
     justify-content: space-between;
+}
+
+
+/* No-Project-Text Component */
+.no-project{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--p1);
+}
+
+.up-arrow{
+    width: 3rem;
+    align-self: flex-end;
+    margin-right: var(--p2);
+}
+
+.empty-project-text{
+    font-weight: 400;
+    font-size: var(--text-size-lg);
+    color: var(--text-clr-dark);
+}
+
+
+
+
+@media screen and (max-width: 460px) {
+    .projects-container{
+        width: 100%;
+    }
 }
