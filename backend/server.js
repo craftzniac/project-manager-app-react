@@ -3,10 +3,11 @@ import projectRouter from "./routes/projectRouter.js";
 import boardRouter from "./routes/boardRouter.js";
 import cardRouter from "./routes/cardRouter.js";
 import cors from "cors";
+import fs from 'fs'
+
 
 const app = express();
-
-let PORT = 4000;
+const PORT = 4000;
 
 app.use(cors());
 app.use(express.static("public"));
@@ -24,6 +25,14 @@ app.use("/api/v1/projects/boards/cards", cardRouter);
 function startServer(PORT_NUMBER){
      app.listen(PORT_NUMBER, () => {
           console.log('Server started on port: ' + PORT_NUMBER)
+          const content = `const baseUrl = "http://localhost:${PORT_NUMBER}/api/v1";
+          export default baseUrl;`
+          try{
+               fs.writeFileSync('../frontend/src/pages/baseUrl.js', content)
+          }catch(err){
+               console.error(err)
+          }
+
      }).on('error', (err) => {
           console.log("There was an error " + err.message)
           if (err.message.includes("EADDRINUSE")){
