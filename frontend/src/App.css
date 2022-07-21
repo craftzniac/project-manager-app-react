@@ -103,9 +103,9 @@ input:focus {
 }
 
 /* large mobile */
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 500px) {
     :root{
-        --p1: calc(1rem * 0.8);
+        --p1: calc(1rem * 0.9);
     }
 }
 

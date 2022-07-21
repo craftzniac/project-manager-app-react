@@ -1,0 +1,24 @@
+{
+  "name": "project-manager-app-react",
+  "version": "1.0.0",
+  "description": "Just refactoring the code for the project-manager-app repo to use reactjs for the frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node starter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeyOnyedika/project-manager-app-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeyOnyedika/project-manager-app-react/issues"
+  },
+  "homepage": "https://github.com/MikeyOnyedika/project-manager-app-react#readme",
+  "dependencies": {
+    "node-pty": "^0.10.1"
+  }
+}

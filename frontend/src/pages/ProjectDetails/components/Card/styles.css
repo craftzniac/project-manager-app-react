@@ -5,13 +5,14 @@
     padding: calc(var(--p1) * 0.3);
     gap: 0.4rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     min-width: 0;
 }
 
 .card-completed {
-    margin-top: 0.3rem;
+    /* margin-top: 0.3rem; */
+    margin-left: calc(var(--p1) * 0.3);
 }
 
 .card-description {
@@ -20,7 +21,6 @@
     width: 100%;
     word-wrap: break-word;
     padding-inline: calc(var(--p1) * 0.3);
-    /* padding-block: calc(var(--p-block) * 0.5); */
 }
 
 .card-settings {

@@ -2,6 +2,7 @@
     display: flex;
     align-self: center;
     width: 70%;
+    padding-inline: var(--p2);
 }
 
 
@@ -20,4 +21,10 @@
     align-items: flex-start;
     gap: 0.5rem;
     width: 50%;
+}
+
+@media screen and (max-width: 500px) {
+    #add-board-form-container{
+        width: 100%;
+    }
 }
