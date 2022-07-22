@@ -62,26 +62,25 @@ class BaseDb {
                createCardTable,
           ];
 
-          try{
+          try {
                const isTablesCreated = await this.runQueryList(queryList);
-               console.log(isTablesCreated)
-          }catch(err){
-               console.log(err)
+               console.log(isTablesCreated);
+          } catch (err) {
+               throw new Error(err);
           }
-          
      }
 
      runQueryList(queryList) {
           return new Promise(async (resolve, reject) => {
-               for (let i=0; i < queryList.length; i++){
+               for (let i = 0; i < queryList.length; i++) {
                     try {
                          const result = await this.run(queryList[i]);
                     } catch (err) {
-                         reject(err)
+                         reject(err);
                          return;
                     }
                }
-               resolve("tables created successfully")
+               resolve("tables created successfully");
           });
      }
 
