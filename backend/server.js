@@ -3,11 +3,10 @@ import projectRouter from "./routes/projectRouter.js";
 import boardRouter from "./routes/boardRouter.js";
 import cardRouter from "./routes/cardRouter.js";
 import cors from "cors";
-import fs from 'fs'
-
+import fs from "fs";
 
 const app = express();
-const PORT = 4000;
+let PORT = 4000;
 
 app.use(cors());
 app.use(express.static("public"));
@@ -21,26 +20,24 @@ app.use("/api/v1/projects/", projectRouter);
 app.use("/api/v1/projects/boards", boardRouter);
 app.use("/api/v1/projects/boards/cards", cardRouter);
 
-
-function startServer(PORT_NUMBER){
-     app.listen(PORT_NUMBER, () => {
-          console.log('Server started on port: ' + PORT_NUMBER)
-          const content = `const baseUrl = "http://localhost:${PORT_NUMBER}/api/v1";
-          export default baseUrl;`
-          try{
-               fs.writeFileSync('../frontend/src/pages/baseUrl.js', content)
-          }catch(err){
-               console.error(err)
+function startServer() {
+     app.listen(PORT, () => {
+          console.log("Backend Server started on port: " + PORT);
+          const content = `const baseUrl = "http://localhost:${PORT}/api/v1";
+          export default baseUrl;`;
+          try {
+               fs.writeFileSync("../frontend/src/pages/baseUrl.js", content);
+          } catch (err) {
+               console.error(err);
           }
-
-     }).on('error', (err) => {
-          console.log("There was an error " + err.message)
-          if (err.message.includes("EADDRINUSE")){
-               console.log('Attempting to start server on a new port...')
-               PORT_NUMBER += 1;
+     }).on("error", (err) => {
+          console.log("There was an error " + err.message);
+          if (err.message.includes("EADDRINUSE")) {
+               console.log("Attempting to start server on a new port...");
+               PORT += 1;
+               startServer();
           }
-          startServer(PORT_NUMBER)
-     })
+     });
 }
 
-startServer(PORT);
+startServer();

@@ -29,7 +29,7 @@ class BaseDb {
           return this.#connection;
      }
 
-     createTables() {
+     async createTables() {
           const createProjectTable = {
                query: `CREATE TABLE IF NOT EXISTS project (id VARCHAR(20)  PRIMARY KEY, 
                                                     name VARCHAR(300) NOT NULL,
@@ -62,32 +62,56 @@ class BaseDb {
                createCardTable,
           ];
 
-          for (let query of queryList) {
+          try{
+               const isTablesCreated = await this.runQueryList(queryList);
+               console.log(isTablesCreated)
+          }catch(err){
+               console.log(err)
+          }
+          
+     }
+
+     runQueryList(queryList) {
+          return new Promise(async (resolve, reject) => {
+               for (let i=0; i < queryList.length; i++){
+                    try {
+                         const result = await this.run(queryList[i]);
+                    } catch (err) {
+                         reject(err)
+                         return;
+                    }
+               }
+               resolve("tables created successfully")
+          });
+     }
+
+     run(query) {
+          return new Promise((resolve, reject) => {
                this.#connection.query(query.query, (error, result) => {
                     if (!error) {
-                         console.log(`${query.tableName} table created`);
+                         resolve(true);
                     } else {
-                         console.log(
+                         reject(
                               `${query.tableName} table not created.  ${error}. Check your database connection!`
                          );
                     }
                });
-          }
+          });
      }
 
      getProjectBoards(projectId) {
           return new Promise((resolve, reject) => {
                const query = `SELECT * FROM board WHERE project_id = ? ORDER BY date_created DESC`;
-               this.#connection.query(query, [ projectId ], (error, result) => {
+               this.#connection.query(query, [projectId], (error, result) => {
                     if (!error) {
-                         result = result.map(board => {
+                         result = result.map((board) => {
                               return {
                                    id: board.id,
                                    title: board.title,
                                    dateCreated: board.date_created,
-                                   projectId: board.project_id
-                              }
-                         })
+                                   projectId: board.project_id,
+                              };
+                         });
                          resolve(result);
                     } else {
                          reject(error);
