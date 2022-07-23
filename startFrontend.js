@@ -12,6 +12,10 @@ function initFrontend() {
          stdio: "pipe",
     });
 
+    startFrontend.stderr.on('data', (data) => {
+          console.log(data.toString())
+    })
+
     startFrontend.stdout.on("data", function (data) {
          if (data.includes("Something is already running on port")) {
                console.log("Something is already running on port " + process.env.PORT + ". Attempting to use another port...")
