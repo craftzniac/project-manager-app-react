@@ -21,6 +21,7 @@ ping.stdout.on("data", (data) => {
 
 ping.on("exit", async () => {
     if (isNetwork) {
+        await gitPull()
         const message = await installDeps()
         console.log(message)
     } else {
@@ -28,6 +29,23 @@ ping.on("exit", async () => {
     }
     await startServers()
 })
+
+function gitPull(){
+    return new Promise((resolve, reject) => {
+        console.log("Updating Project files ... ")
+        let gitPull;
+        if (process.platform === WINDOWS){
+            gitPull = childProcess.spawn("powershell.exe", ["npm", 'run', 'gitPull'], { stdio: "inherit" });
+        }else{
+            gitPull = childProcess.spawn("npm", ['run', 'gitPull'], { stdio: "inherit" });
+        }
+
+        gitPull.on('exit', () => {
+            console.log("Done updating files")
+            resolve("")
+        })
+    })
+}
 
 
 function installDeps() {
