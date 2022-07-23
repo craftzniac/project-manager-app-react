@@ -66,7 +66,7 @@ class BaseDb {
                const isTablesCreated = await this.runQueryList(queryList);
                console.log(isTablesCreated);
           } catch (err) {
-               throw new Error(err);
+               throw new Error("Make sure your database server is running and that you created the database using the appropriate credientials" + err);
           }
      }
 

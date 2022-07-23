@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm i concurrently --save && npm run gitPull && concurrently \"cd ./backend/ && npm start\" \"node ./startFrontend.js\" ",
-    "gitPull": "git pull"
+    "start": "node starter.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,6 @@
   },
   "homepage": "https://github.com/MikeyOnyedika/project-manager-app-react#readme",
   "dependencies": {
-    "concurrently": "^7.3.0"
+    "node-pty": "^0.10.1"
   }
 }
