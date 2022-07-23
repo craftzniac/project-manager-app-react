@@ -26,7 +26,7 @@ DB_USER=root
 DB_USER_PASSWORD=admin333
 ```
 **Note:** You can also decide to change the database credentials in this backend/.env but make sure they are the same credentials used to create the database in XAMPP
-- Open a terminal/Command prompt in root of the project and run `npm start`. That's all. Everyother thing.
+- Open a terminal/Command prompt in root of the project and run `npm start`, then wait for the project to be set up. This may take some time so you may want to go grab a coffee or watch one or two youtube videos or check your messages on facebook/discord/telegram.
 - To contribute to this project, open a pull request and I will be sure to check it out. Also, if you find bugs or thing of any improvements to the project, kindly open an Issue. 
 
 Happy Coding!! 🎉
