@@ -13,7 +13,9 @@ if (process.platform === WINDOWS) {
 }
 
 ping.stdout.on("data", (data) => {
-    isNetwork = true;
+    if (!data.toString().includes("Ping request could not find host")){
+        isNetwork = true;
+    }
     ping.kill('SIGINT')
 })
 
