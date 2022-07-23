@@ -15,7 +15,7 @@ Currently, there are two pages, the index page and the project details page
 
 ## Try out this project on your machine
 - Clone the project
-`git clone https://github.com/MikeyOnyedika/project-manager-app.git`
+`git clone https://github.com/MikeyOnyedika/project-manager-app-react.git`
 - Install XAMPP if you don't already have mysql setup locally [download xampp here](https://xampp.org). Make sure to check the mysql server option when installing XAMPP
 - Open the XAMPP control panel and fire up the mysql server
 - open `localhost/phpmyadmin` on your browser
