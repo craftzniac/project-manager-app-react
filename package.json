@@ -4,9 +4,10 @@
   "description": "Just refactoring the code for the project-manager-app repo to use reactjs for the frontend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm i concurrently --save && npm run gitPull && concurrently \"cd ./backend/ && npm start\" \"node ./startFrontend.js\" ",
-    "gitPull": "git pull"
+    "start": "node checkNetwork.js",
+    "gitPull": "git pull",
+    "start-servers": "concurrently \"cd ./backend && npm start\"   \"node startFrontend.js\"",
+    "install-dependencies": "npm i concurrently --save && cd ./backend && npm i && cd ../frontend && npm i"
   },
   "repository": {
     "type": "git",
