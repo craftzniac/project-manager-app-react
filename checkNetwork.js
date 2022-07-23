@@ -1,9 +1,17 @@
+const WINDOWS = "win32"
+
 console.log('checking for internet connection...')
 const childProcess = require('child_process');
-const { resolve } = require('path');
 let isNetwork = false;
 
-const ping = childProcess.spawn("ping", ['-w', '10', 'google.com']);
+let ping;
+if (process.platform === WINDOWS) {
+    ping = childProcess.spawn("powershell.exe", ["ping", '-w', '10', 'google.com']);
+} else {
+    ping = childProcess.spawn("ping", ['-w', '10', 'google.com']);
+
+}
+
 ping.stdout.on("data", (data) => {
     isNetwork = true;
     ping.kill('SIGINT')
@@ -11,7 +19,8 @@ ping.stdout.on("data", (data) => {
 
 ping.on("exit", async () => {
     if (isNetwork) {
-        await installDeps()
+        const message = await installDeps()
+        console.log(message)
     } else {
         console.log("No Internet!")
     }
@@ -21,12 +30,16 @@ ping.on("exit", async () => {
 
 function installDeps() {
     return new Promise((resolve, reject) => {
-        const installDeps = childProcess.spawn("npm", ['run', 'install-dependencies']);
-        installDeps.stdout.on("data", (data) => {
-            console.log(data.toString())
-        })
+        let installDeps;
+
+        if (process.platform === WINDOWS){
+            installDeps = childProcess.spawn("powershell.exe", ["npm", 'run', 'install-dependencies'], { stdio: "inherit" });
+        }else{
+            installDeps = childProcess.spawn("npm", ['run', 'install-dependencies'], { stdio: "inherit" });
+        }
+
         installDeps.on('exit', () => {
-            resolve("")
+            resolve("Dependencied installed")
         })
     })
 }
@@ -34,9 +47,12 @@ function installDeps() {
 function startServers() {
     return new Promise((resolve, reject) => {
         console.log("starting servers ...")
-        const startServers = childProcess.spawn("npm", ['run', 'start-servers']);
-        startServers.stdout.on('data', (data) => {
-            console.log(data.toString())
-        })
+        let startServers;
+
+        if (process.platform === WINDOWS){
+            startServers = childProcess.spawn("powershell.exe", ["npm", 'run', 'start-servers'], { stdio: 'inherit' });
+        }else{
+            startServers = childProcess.spawn("npm", ['run', 'start-servers'], { stdio: 'inherit' });
+        }
     })
 }
