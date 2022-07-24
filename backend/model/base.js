@@ -66,7 +66,10 @@ class BaseDb {
                const isTablesCreated = await this.runQueryList(queryList);
                console.log(isTablesCreated);
           } catch (err) {
-               throw new Error("Make sure your database server is running and that you created the database using the appropriate credientials" + err);
+               throw new Error(
+                    "Make sure your database server is running and that you created the database using the appropriate credientials" +
+                         err
+               );
           }
      }
 
@@ -100,7 +103,7 @@ class BaseDb {
 
      getProjectBoards(projectId) {
           return new Promise((resolve, reject) => {
-               const query = `SELECT * FROM board WHERE project_id = ? ORDER BY date_created DESC`;
+               const query = `SELECT * FROM board WHERE project_id = ? `;
                this.#connection.query(query, [projectId], (error, result) => {
                     if (!error) {
                          result = result.map((board) => {
