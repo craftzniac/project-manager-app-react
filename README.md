@@ -1,19 +1,21 @@
 # Project Manager App
 
 ## Project Description
+Project Manager App is an offline webapp that you can use to manager your notes and todos for your projects. Group various todos as **boards** and manage todos as **cards**
 
-Manage your notes as projects, group todos into boards and add todos as cards. 
-Currently, there are two pages, the index page and the project details page
+### <span style="text-decoration:underline"> Index Page </span>
+This is where all your projects or notes are displayed and you can add new project
 
-### Index page is where all your projects or notes are displayed and you can add new project
+![index page](./frontend/src/assets/images/index_page.png)
 
-![Sorry, I will fix this image later](./public/assets/index.png)
+### <span style="text-decoration:underline"> Project details page </span>
+This page allows you see and edit the details of a project todo. A Board can represent a group of todos.
 
-### Project details page
+![Sorry, I will fix this image later](./frontend/src/assets/images/project_detail1.png)
 
-![Sorry, I will fix this image later](./public/assets/details.png)
+![Sorry, I will fix this image later](./frontend/src/assets/images/project_detail2.png)
 
-## Try out this project on your machine
+## Run this project on your machine
 - Clone the project
 `git clone https://github.com/MikeyOnyedika/project-manager-app-react.git`
 - Install XAMPP if you don't already have mysql setup locally [download xampp here](https://xampp.org). Make sure to check the mysql server option when installing XAMPP
