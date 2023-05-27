@@ -23,20 +23,8 @@ app.use("/api/v1/projects/boards/cards", cardRouter);
 function startServer() {
      app.listen(PORT, () => {
           console.log("Backend Server started on port: " + PORT);
-          const content = `const baseUrl = "http://localhost:${PORT}/api/v1";
-          export default baseUrl;`;
-          try {
-               fs.writeFileSync("../frontend/src/pages/baseUrl.js", content);
-          } catch (err) {
-               console.error(err);
-          }
      }).on("error", (err) => {
-          console.log("There was an error " + err.message);
-          if (err.message.includes("EADDRINUSE")) {
-               console.log("Attempting to start server on a new port...");
-               PORT += 1;
-               startServer();
-          }
+          console.log("There was an error:  " + err.message);
      });
 }
 
