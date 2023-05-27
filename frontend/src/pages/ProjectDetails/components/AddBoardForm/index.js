@@ -12,16 +12,16 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                setIsTitleEmpty(true);
           } else {
                setIsTitleEmpty(false);
-               
+
                const response = await (await fetch(baseUrl + "/projects/boards/", {
                     method: 'POST',
                     headers: {
                          "Content-Type": "application/json",
-                         
+
                     },
-                    body: JSON.stringify({ boardName: title , projectId: projectId })
+                    body: JSON.stringify({ boardName: title, projectId: projectId })
                })).json()
-               
+
                setBoards((prevValue) => {
                     return [...prevValue, response.board]
                })
@@ -29,7 +29,7 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                setTitle("")
           }
      };
- 
+
      return (
           <>
                <div id="add-board-form-container">
@@ -46,7 +46,7 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                               {isTitleEmpty && (
                                    <p className="error-msg">
                                         You have not entered any board name
-                                   </p>
+                                    </p>
                               )}
                          </div>
                          <button
@@ -54,9 +54,7 @@ const AddBoardForm = ({ projectId, setBoards, setProjBoardCount }) => {
                               type="submit"
                               id="add-board-btn"
                               onClick={addBoard}
-                              className="btn"
-
-                         >
+                              className="btn">
                               Create Board
                          </button>
                     </div>

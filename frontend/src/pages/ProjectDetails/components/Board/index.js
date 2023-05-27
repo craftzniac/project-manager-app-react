@@ -21,8 +21,6 @@ export const Board = (props) => {
      }, [])
 
 
-     
-
      const makeBoardEditable  =  () => {
           titleRef.current.classList.add('highlight')
           titleRef.current.contentEditable = true;          
