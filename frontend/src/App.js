@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // pages
@@ -11,7 +11,7 @@ const App = () => {
      return (
           <Router>
                <Routes>
-                    <Route path="/" element={<Projects />}></Route>
+                    <Route path="/" element={<Projects />} />
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/projects/:id" element={<ProjectDetails />} />
                     <Route path="*" element={<PageNotFound />} />

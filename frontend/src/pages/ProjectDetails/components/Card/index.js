@@ -7,6 +7,7 @@ import baseUrl from "../../../baseUrl"
 const Card = ( props ) => {
      // const { card } = cardContainer;
      const {id, boardId, setCards} = props;
+     console.log("boardId: ", boardId)
      const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(Boolean(props.isCompleted))
      const [description, setDescription] = useState(props.description)
 

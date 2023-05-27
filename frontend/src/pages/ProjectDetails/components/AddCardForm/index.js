@@ -1,5 +1,5 @@
 import './styles.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import baseUrl from '../../../baseUrl'
 
 const AddCardForm = ({ boardId, setCards}) => {
